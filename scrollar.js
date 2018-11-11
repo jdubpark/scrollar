@@ -251,18 +251,23 @@
 
     // create data for block for animation
     createBlock = function(el, i){
-      var opts = {}, data = {}, wrapper;
+      var opts = {}, data = {}, wrapper, _el = isNode(el);
 
-      opts.speed = Number(isNode(el).getAttribute("data-scrollar-speed")) || self.conf.speed;
+      // get attributes
+      opts.speed = Number(_el.getAttribute("data-scrollar-speed")) || self.conf.speed;
+      wrapper = _el.getAttribute("data-scrollar-wrapper");
 
-      // NOTE: make wrapper customizable using data attr?
-      wrapper = self.wrapper;
+      // check if wrapper provided in wrapper is valid
+      // if not, default to self.wrapper
+      if (wrapper){
+        if (isNode(wrapper).length === 0) throw new Error("The wrapper you are trying to select ["+(self.conf.wrapper)+"] doesn't exist.");
+      } else wrapper = self.wrapper;
 
       // offset
       data.offsetY = {};
       // offset abs(olute): offset from document top
       // offset rel(ative): offset from wrapper top
-      data.offsetY.abs = getOffset(el).top;
+      data.offsetY.abs = getOffset(_el).top;
       data.offsetY.wrapper = getOffset(wrapper).top;
       data.offsetY.isWrapperLegit = notLegitWrappers.indexOf(wrapper) === -1;
       data.offsetY.rel = data.offsetY.abs - data.offsetY.wrapper; // abs offset - wrapper offset
