@@ -1,0 +1,21 @@
+{
+  "name": "scrollar",
+  "version": "1.0.0",
+  "description": "Vanilla Javascript Parallax Scrolling",
+  "main": "scrollar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/jwparktom/scrollar.git",
+  "keywords": [
+    "Scrollar",
+    "parallax",
+    "scrolling"
+  ],
+  "author": "Park Jong Won",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jwparktom/scrollar/issues"
+  },
+  "homepage": "https://github.com/jwparktom/scrollar#readme"
+}
