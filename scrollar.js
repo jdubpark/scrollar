@@ -108,11 +108,11 @@
       };
       calc.window.height.half = calc.window.height.full / 2;
       calc.window.width.half = calc.window.width.full / 2;
-      return calc;
+      size = calc;
     };
 
     // gives size info, will change on resize
-    size = calcSize();
+    calcSize();
 
     // check for requestAnimationFrame, use setTimeout if not supported
     frame = window.requestAnimationFrame ||
@@ -159,7 +159,6 @@
       pos.oy = pos.cy;
 
       // update new
-      // FIXME: SHOULD change when wrapper is on
       pos.cy = cpos();
 
       // true: scroll position DID change
@@ -186,6 +185,7 @@
 
     animate = function(){
       var len = self.elemsNode.length;
+
       for (var i = 0; i < len; i++){
         var block, elem, toWrapper;
 
@@ -224,12 +224,27 @@
       if (notLegitWrappers.indexOf(el) >= 0) return {top: 0, right: 0, bottom: 0, left: 0};
       // keep aware of odd value calculation: http://javascript.info/coordinates
       else {
-        var offset = isNode(el).getBoundingClientRect();
+        var _el, offset, translate3d;
+        _el = isNode(el);
+        // get offsett data
+        offset = _el.getBoundingClientRect();
+        // get current translate3d data for subtraction
+        // which makes the animation smooth when resized
+        translate3d = _el.style.transform.match(/translate3d\(([\w\W].*?)\)/);
+        if (!translate3d) translate3d = [0, 0, 0];
+        else {
+          var captured = translate3d[1];
+          translate3d = captured.split(",");
+          for (var i = 0; i < translate3d.length; i++){
+            translate3d[i] = parseFloat(translate3d[i]);
+          }
+        }
+        // translate3d = translate3d.length > 0 ? translate3d: [0, 0, 0];
         return {
           // add window.scrollY to calculate the distance from the top of the page (document/window)
           // element.getBoundingClientRect() gives the position within the viewport
           // window.scrollY gives the distance from the top of the viewport to the top of the document.
-          top: offset.y + window.scrollY,
+          top: offset.y + window.scrollY - translate3d[1],
         };
       }
     };
@@ -298,8 +313,17 @@
     };
 
     init = function(){
+      // recalculate size
+      calcSize();
+
+      // cache blocks for animation & update
       cacheBlocks();
-      animate(); // force animate for init
+
+      // force animate for init
+      // when the user opens the browser OR resizes the window
+      animate();
+
+      // start animation frame loading
       update();
 
       if (pause){
@@ -307,6 +331,9 @@
         pause = false;
       }
     };
+
+    // allow init (refresh) on request
+    self.refresh = init;
 
     self.destroy = function(){
       // Remove resize event listener if not pause, and pause
@@ -321,9 +348,6 @@
     };
 
     init();
-
-    // allow init
-    self.refresh = init;
 
     return self;
   };
