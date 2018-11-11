@@ -167,17 +167,17 @@
     };
 
     updatePosition = function(el, offsetY, block){
-      var transform, prevTransform = "";
+      var transform, customTransform = "";
 
       // if block data exists, apply speed & previous transform style
       // this filters out init updatePosition with no block data
       if (block){
         offsetY = offsetY * block.travel.speed;
-        prevTransform = " " + block.transform;
+        customTransform = " " + block.transform;
       }
 
       // apply transform value to style
-      transform = "translate3d(0px, " + offsetY + "px, 0px)" + prevTransform;
+      transform = "translate3d(0px, " + offsetY + "px, 0px)" + customTransform;
       el.style[transformProp] = transform;
 
       return {offsetY: offsetY, transform: transform};
@@ -292,6 +292,8 @@
       data.mtdt.height.half = data.mtdt.height.full / 2;
 
       // retrieve inline transform style, but remove translate3d value
+      // NOTE: to get transform style from css files
+      // refer to https://www.w3.org/TR/2011/WD-css3-2d-transforms-20111215/#matrix-decomposition
       data.transform = self.elemsNode[i].style.transform.replace(/translate3d\([\w\W].*?\)/, "");
 
       return data;
