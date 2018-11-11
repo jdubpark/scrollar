@@ -63,7 +63,7 @@
 
     // validate if elems exist
     for (var i = 0; i < elems.length; i++){
-      if (document.querySelector(elems[i]).length === 0) throw new Error("The elements you are trying to select ["+(elems[i])+"] don't exist.");
+      if (!document.querySelector(elems[i])) throw new Error("The elements you are trying to select ["+(elems[i])+"] don't exist.");
     }
     self.elems = elems;
     self.elemsNode = document.querySelectorAll(elems);
@@ -75,7 +75,7 @@
 
     // validate wrapper if assigned, else assign document as wrapper
     if (self.conf.wrapper){
-      if (document.querySelector(self.conf.wrapper).length > 0) self.wrapper = self.conf.wrapper;
+      if (document.querySelector(self.conf.wrapper)) self.wrapper = self.conf.wrapper;
       else throw new Error("The wrapper you are trying to select ["+(self.conf.wrapper)+"] doesn't exist.");
     } else self.wrapper = document;
 
@@ -260,7 +260,7 @@
       // check if wrapper provided in wrapper is valid
       // if not, default to self.wrapper
       if (wrapper){
-        if (isNode(wrapper).length === 0) throw new Error("The wrapper you are trying to select ["+(self.conf.wrapper)+"] doesn't exist.");
+        if (!document.querySelector(wrapper)) throw new Error("The wrapper you are trying to select ["+(self.conf.wrapper)+"] doesn't exist.");
       } else wrapper = self.wrapper;
 
       // offset
