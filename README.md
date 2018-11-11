@@ -23,8 +23,13 @@ Scrollar is a super lightweight and awesome vanilla javascript parallax library.
 ```
 
 or use **CDN**
+<<<<<<< HEAD
 ```html
 <script src="https://cdn.jsdelivr.net/npm/scrollar@1/scrollar.min.js"></script>
+=======
+```javascript
+<scriptt src="https://cdn.jsdelivr.net/npm/scrollar@1/scrollar.min.js"></script>
+>>>>>>> bd5acd71dffa9907c71f87f79e49e08fd00e770e
 ```
 
 or use **NPM**
