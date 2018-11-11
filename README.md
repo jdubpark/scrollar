@@ -11,8 +11,8 @@ Scrollar is a super lightweight and awesome vanilla javascript parallax library.
 - **[Getting Started](#getting-started)**
 - **[Options](#options)**
 - **[More Info on Options](#more-info-on-options)**
-<!-- - **[Development](#development)** -->
 - **[License](#license)**
+<!-- - **[Development](#development)** -->
 
 #### **by [Park Jong Won](https://parkjongwon.com)**
 
@@ -66,11 +66,11 @@ Option | Explanation | Accepted
 speed | How much pixel per user scrolled pixel should the parallax element be moved.<br><br>DEFAULT: `0.6` px | number (px)
 wrapper | The parent element of the parallax element. Used to evaluate offset top and align the parallax element according to the wrapper.<br><br>DEFAULT: `null` (document) | any class name
 distance | The distance in px before the parallax element pauses. Prevents unnecessary parallax scrolling once out of the designated area. <br><br>DEFAULT: `1000` px | number (px)
-&#10013; vertical | Should vertical parallax scrolling be activated.<br><br>DEFAULT: `true` | boolean
-&#10013; \**horizontal* | Should horizontal parallax scrolling be activated.<br><br>DEFAULT: `false` | boolean
+&#x01C2; vertical | Should vertical parallax scrolling be activated.<br><br>DEFAULT: `true` | boolean
+&#x01C2; \**horizontal* | Should horizontal parallax scrolling be activated.<br><br>DEFAULT: `false` | boolean
 callback | Function to be called when any of the parallax element is moved.<br><br>PARAMETERS: `none` | function
 
-&#10013; Only one can be `true`
+&#x01C2; Only one can be `true`
 
 ## **More Info on Options**
 #### **speed**
