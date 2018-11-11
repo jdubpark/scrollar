@@ -10,7 +10,7 @@ Scrollar is a super lightweight and awesome vanilla javascript parallax library.
 - **[Install](#install)**
 - **[Getting Started](#getting-started)**
 - **[Options](#options)**
-- **[Detail: Options](#detail:-options)**
+- **[More Info on Options](#more-info-on-options)**
 <!-- - **[Development](#development)** -->
 - **[License](#license)**
 
@@ -72,7 +72,7 @@ callback | Function to be called when any of the parallax element is moved.<br><
 
 &#10013; Only one can be `true`
 
-## **Detail: Options**
+## **More Info on Options**
 #### **speed**
 The scrolling speed (in px) of the parallax element per user scrolled px. In other words, the speed represents how much the element should move when the user scrolls 1px.
 
