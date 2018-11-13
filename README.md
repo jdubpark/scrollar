@@ -1,4 +1,7 @@
 # **SCROLLAR**
+
+[![NPM](https://nodei.co/npm/scrollar.png)](https://nodei.co/npm/scrollar/)
+
 Scrollar is a super lightweight and awesome vanilla javascript parallax library.
 
 ### **Why use Scrollar?**
